@@ -361,7 +361,7 @@ SPACING SYSTEM (px)
 FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 /52 / 62 / 74 / 86 / 98
 */
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 720px) {
   body {
     padding: 1.6rem;
   }
@@ -370,15 +370,16 @@ FONT SIZE SYSTEM (px)
     padding: 0.4rem;
     height: 10rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .search {
-    /* width: 100%; */
+    width: 100%;
     padding: 0.5rem 0.8rem;
     /* margin: 1.8rem; */
     justify-self: center;
-    margin-left: 8rem;
+    /* margin-left: 8rem; */
   }
 
   .main {
@@ -391,6 +392,7 @@ FONT SIZE SYSTEM (px)
   .num-results {
     justify-self: center;
     font-size: 1.8rem;
+    /* margin-right: 14rem; */
   }
 
   .box {
@@ -402,15 +404,12 @@ FONT SIZE SYSTEM (px)
     align-items: center;
     align-content: center;
     gap: 0.8rem;
-    margin-left: 8rem;
+    /* margin-left: 4rem; */
   }
   .logo img {
     width: 4.4rem;
     height: 4.4rem;
     border: 1px;
     border-radius: 50%;
-  }
-  .logo h1 {
-    margin-right: 0.4rem;
   }
 }
