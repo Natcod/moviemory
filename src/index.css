@@ -79,42 +79,6 @@ body {
   gap: 2.4rem;
   justify-content: center;
 }
-@media only screen and (max-width: 680px) {
-  body {
-    padding: 1.6rem;
-  }
-
-  .nav-bar {
-    padding: 0.8rem;
-    height: 10rem;
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .search {
-    width: 5rem;
-    padding: 0.5rem 0.8rem;
-  }
-
-  .main {
-    margin-top: 1.2rem; /* Adjust margin-top for smaller screens */
-    height: auto;
-    display: grid;
-    /* flex-direction: column; 
-    gap: 1.2rem; */
-  }
-  .num-results {
-    justify-self: right;
-  }
-
-  .box {
-    width: 100%;
-    /* max-width: none;  */
-  }
-  .logo {
-    width: 100%;
-  }
-}
 
 .box {
   width: 42rem;
@@ -397,3 +361,56 @@ SPACING SYSTEM (px)
 FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 /52 / 62 / 74 / 86 / 98
 */
+@media only screen and (max-width: 680px) {
+  body {
+    padding: 1.6rem;
+  }
+
+  .nav-bar {
+    padding: 0.4rem;
+    height: 10rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search {
+    /* width: 100%; */
+    padding: 0.5rem 0.8rem;
+    /* margin: 1.8rem; */
+    justify-self: center;
+    margin-left: 8rem;
+  }
+
+  .main {
+    margin-top: 1.3rem; /* Adjust margin-top for smaller screens */
+    height: auto;
+    display: grid;
+    /* flex-direction: column; 
+    gap: 1.2rem; */
+  }
+  .num-results {
+    justify-self: center;
+    font-size: 1.8rem;
+  }
+
+  .box {
+    width: 100%;
+    /* max-width: none;  */
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 0.8rem;
+    margin-left: 8rem;
+  }
+  .logo img {
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 1px;
+    border-radius: 50%;
+  }
+  .logo h1 {
+    margin-right: 0.4rem;
+  }
+}

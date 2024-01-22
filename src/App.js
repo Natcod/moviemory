@@ -56,8 +56,8 @@ export default function App() {
     <>
       <NavBar>
         <Logo />
-        <Search />
         <NumResult />
+        <Search />
       </NavBar>
       <Main>
         <Box>
