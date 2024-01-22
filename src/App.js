@@ -4,6 +4,7 @@ import Box from "./Box";
 import Movie from "./Movie";
 import NumResult from "./NumResult";
 import WatchedSummary from "./WatchedSummary";
+import WatchedMovieList from "./WatchedMovieList";
 
 const movies = [
   {
@@ -56,7 +57,7 @@ export default function App() {
     <>
       <NavBar>
         <Logo />
-        <NumResult />
+        <NumResult movies={movies} />
         <Search />
       </NavBar>
       <Main>
@@ -65,6 +66,7 @@ export default function App() {
         </Box>
         <Box>
           <WatchedSummary watched={watched} />
+          <WatchedMovieList watched={watched} />
         </Box>
       </Main>
     </>
