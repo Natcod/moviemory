@@ -67,9 +67,9 @@ body {
   backdrop-filter: blur(3.8px);
   -webkit-backdrop-filter: blur(3.8px);
   /* border: 1px solid rgba(255, 255, 255, 0.35); */
-  box-shadow: 7px 10px 90px 5px rgba(145, 60, 212, 0.59);
+  /* box-shadow: 7px 10px 90px 5px rgba(145, 60, 212, 0.59);
   -webkit-box-shadow: 7px 10px 90px 5px rgba(145, 60, 212, 0.59);
-  -moz-box-shadow: 7px 10px 90px 5px rgba(145, 60, 212, 0.59);
+  -moz-box-shadow: 7px 10px 90px 5px rgba(145, 60, 212, 0.59); */
 }
 
 .main {
@@ -79,30 +79,40 @@ body {
   gap: 2.4rem;
   justify-content: center;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 680px) {
   body {
-    padding: 1.6rem; /* Adjust padding for smaller screens */
+    padding: 1.6rem;
   }
 
   .nav-bar {
-    padding: 0.8rem; /* Adjust padding for smaller screens */
-    height: auto;
+    padding: 0.8rem;
+    height: 10rem;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .search {
-    width: 100%; /* Make the search bar full-width on smaller screens */
+    width: 5rem;
+    padding: 0.5rem 0.8rem;
   }
 
   .main {
     margin-top: 1.2rem; /* Adjust margin-top for smaller screens */
     height: auto;
-    flex-direction: column; /* Stack boxes vertically on smaller screens */
-    gap: 1.2rem; /* Adjust gap between boxes for smaller screens */
+    display: grid;
+    /* flex-direction: column; 
+    gap: 1.2rem; */
+  }
+  .num-results {
+    justify-self: right;
   }
 
   .box {
-    width: 100%; /* Make the boxes full-width on smaller screens */
-    max-width: none; /* Remove maximum width on smaller screens */
+    width: 100%;
+    /* max-width: none;  */
+  }
+  .logo {
+    width: 100%;
   }
 }
 
