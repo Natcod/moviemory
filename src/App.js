@@ -8,6 +8,7 @@ import WatchedMovieList from "./WatchedMovieList";
 import { useState } from "react";
 import MovieDetails from "./MovieDetails";
 import useMovie from "./useMovie";
+import Loader from "./Loader";
 
 // const movies = [
 //   {
@@ -58,9 +59,9 @@ const watched = [
 export default function App() {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState("null");
-  const { movies } = useMovie(query);
+  const { movies, isLoading, error } = useMovie(query);
 
-  function handleSelectId(id) {
+  function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
   }
 
@@ -73,7 +74,11 @@ export default function App() {
       </NavBar>
       <Main>
         <Box>
-          <MovieList movies={movies} onSelectMovie={handleSelectId} />
+          {isLoading && <Loader />}
+          {!isLoading && !error && (
+            <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+          )}
+          {error && <ErrorMessage message={error} />}
         </Box>
         <Box>
           {selectedId !== "null" ? (
@@ -103,5 +108,13 @@ function MovieList({ movies, onSelectMovie }) {
         <Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
       ))}
     </ul>
+  );
+}
+function ErrorMessage({ message }) {
+  return (
+    <p className="error">
+      <span>🛑</span>
+      {message}
+    </p>
   );
 }
