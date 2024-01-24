@@ -29,7 +29,6 @@ export default function App() {
 
   return (
     <>
-      {console.log(movies === "undefined")}
       <NavBar>
         <Logo />
         <NumResult movies={movies} />
