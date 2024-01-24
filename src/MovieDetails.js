@@ -8,7 +8,6 @@ export default function MovieDetails({ selectedId }) {
   const {
     Poster: poster,
     Title: title,
-    Year: year,
     imdbRating,
     Runtime: runtime,
     Plot: plot,
