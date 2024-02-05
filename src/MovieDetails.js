@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Loader from "./Loader";
 import StarRating from "./StarRating";
 
@@ -13,6 +13,13 @@ export default function MovieDetails({
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState("");
+  const targetRef = useRef();
+
+  useEffect(() => {
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   const {
     Poster: poster,
@@ -61,7 +68,7 @@ export default function MovieDetails({
   );
 
   return (
-    <div className="details">
+    <div className="details" ref={targetRef}>
       {isLoading ? (
         <Loader />
       ) : (

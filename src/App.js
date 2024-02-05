@@ -5,7 +5,7 @@ import Movie from "./Movie";
 import NumResult from "./NumResult";
 import WatchedSummary from "./WatchedSummary";
 import WatchedMovieList from "./WatchedMovieList";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import MovieDetails from "./MovieDetails";
 import useMovie from "./useMovie";
 import Loader from "./Loader";
@@ -16,7 +16,7 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
   const { movies, isLoading, error } = useMovie(query);
   const [watched, setWatched] = useLocalStorage([], "watched");
-
+  const detailsRef = useRef(null);
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
   }
@@ -25,6 +25,13 @@ export default function App() {
   }
   function handleCloseMovie() {
     setSelectedId(null);
+  }
+  function handleDeleteWatched(id) {
+    setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
+  }
+
+  function onScrollToWatchedDetails() {
+    detailsRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
@@ -42,7 +49,11 @@ export default function App() {
             <>
               {isLoading && <Loader />}
               {!isLoading && !error && (
-                <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
+                <MovieList
+                  movies={movies}
+                  onSelectMovie={handleSelectMovie}
+                  onScroll={onScrollToWatchedDetails}
+                />
               )}
               {error && <ErrorMessage message={error} />}
             </>
@@ -61,7 +72,10 @@ export default function App() {
           ) : (
             <>
               <WatchedSummary watched={watched} />
-              <WatchedMovieList watched={watched} />
+              <WatchedMovieList
+                watched={watched}
+                onDeleteWatched={handleDeleteWatched}
+              />
             </>
           )}
         </Box>
@@ -75,11 +89,16 @@ function NavBar({ children }) {
 function Main({ children }) {
   return <main className="main">{children}</main>;
 }
-function MovieList({ movies, onSelectMovie }) {
+function MovieList({ movies, onSelectMovie, onScroll }) {
   return (
     <ul className="list list-movies">
       {movies?.map((movie) => (
-        <Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
+        <Movie
+          movie={movie}
+          key={movie.imdbID}
+          onSelectMovie={onSelectMovie}
+          onScroll={onScroll}
+        />
       ))}
     </ul>
   );
