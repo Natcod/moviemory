@@ -358,6 +358,12 @@ body {
   font-size: 2rem;
   color: wheat;
 }
+.watch--now {
+  background-color: purple;
+  border-radius: 0.22rem;
+  border: none;
+  color: wheat;
+}
 
 /*
 SPACING SYSTEM (px)
