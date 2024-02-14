@@ -364,7 +364,9 @@ body {
   border: none;
   color: wheat;
 }
-
+.double-click {
+  display: none;
+}
 /*
 SPACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 40 / 48 / 64 / 80 / 96 / 128
@@ -427,4 +429,8 @@ FONT SIZE SYSTEM (px)
     padding: 4rem;
     font-size: 3rem;
   }
+}
+.double-click {
+  display: block;
+  font-size: 1.1rem;
 }

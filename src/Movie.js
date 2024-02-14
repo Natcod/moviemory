@@ -1,8 +1,9 @@
-export default function Movie({ movie, onSelectMovie, onScroll }) {
+export default function Movie({ movie, onSelectMovie, onScroll, detailsRef }) {
   function onClick() {
     onSelectMovie(movie.imdbID);
     onScroll();
   }
+
   return (
     <>
       <li key={movie.imdbID} onClick={onClick}>

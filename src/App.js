@@ -16,6 +16,7 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
   const { movies, isLoading, error } = useMovie(query);
   const [watched, setWatched] = useLocalStorage([], "watched");
+
   const detailsRef = useRef(null);
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
@@ -53,6 +54,7 @@ export default function App() {
                   movies={movies}
                   onSelectMovie={handleSelectMovie}
                   onScroll={onScrollToWatchedDetails}
+                  detailsRef={detailsRef}
                 />
               )}
               {error && <ErrorMessage message={error} />}
@@ -68,6 +70,7 @@ export default function App() {
               onAddWatchedMovie={handleAddWatchedMovie}
               onCloseMovie={handleCloseMovie}
               watched={watched}
+              detailsRef={detailsRef}
             />
           ) : (
             <>
@@ -89,7 +92,7 @@ function NavBar({ children }) {
 function Main({ children }) {
   return <main className="main">{children}</main>;
 }
-function MovieList({ movies, onSelectMovie, onScroll }) {
+function MovieList({ movies, onSelectMovie, onScroll, detailsRef }) {
   return (
     <ul className="list list-movies">
       {movies?.map((movie) => (
@@ -98,6 +101,7 @@ function MovieList({ movies, onSelectMovie, onScroll }) {
           key={movie.imdbID}
           onSelectMovie={onSelectMovie}
           onScroll={onScroll}
+          detailsRef={detailsRef}
         />
       ))}
     </ul>
